@@ -1,0 +1,52 @@
+select last_name,salary from employees where salary>12000;
+select last_name,department_id from employees where employee_id=176;
+select last_name,salary from employees where salary not between 5000 and 12000;
+select last_name,job_id,hire_date from employees where last_name='Matos' or last_name='Taylor' order by hire_date;
+select last_name,department_id from employees where department_id='20' or department_id='50' order by last_name;
+select last_name,salary from employees where (salary between 5000 and 12000) and department_id=20 or department_id=50;
+select last_name,date_format(hire_date,'%d-%M-%y') as Date from employees where extract(year from hire_date)in (1994);
+select last_name,job_id from employees where manager_id is null;
+select last_name,salary,commission_pct from employees where commission_pct is not null order by salary and commission_pct;
+select employee_id,last_name,salary ,department_id from employees where manager_id=103 order by last_name;
+select last_name from employees where last_name  like '__a%';
+select last_name from employees where last_name like '%a%e%';
+select last_name,job_id,salary from employees where job_id in('sa_rep','st_clerk')and salary not in(2500,3500,7000);
+ select last_name,salary,commission_pct from employees where commission_pct=.2;
+select employee_id,last_name,department_id from employees where LOWER(last_name)='higgins';
+select round(45.923,2),round(45.923,0),round(45.923,-1) from dual;
+select last_name,salary,mod(salary,5000) from employees where job_id='SA_REP';
+ select last_name,salary,IFNULL(commission_pct,0) from employees;
+select lpad(last_name,10,'*') from employees;
+select last_name,salary,ifnull(commission_pct,0),(salary*12)+(salary*12*ifnull(commission_pct,0)) AN_SAL from employees;
+select date_format(curdate(),'%d-%M-%y') as Date;
+ select employee_id,last_name,salary,round(salary+(salary*15.5/100)) as 'New Salary' from employees;
+select employee_id,last_name,salary,round(salary+(salary*15.5/100)) as 'New Salary',round(salary*15.5/100) as 'Increase' from employees;
+select concat(upper(substr(last_name,1,1)),substr(last_name,2)) as 'Name',length(last_name) as 'Length' from employees where last_name like 'J%' or last_name like 'A%' or last_name like 'M%';
+select concat(upper(substr(last_name,1,1)),substr(last_name,2)) as 'Name',length(last_name) as 'Length' from employees where last_name like 'J%' or last_name like 'A%' or last_name like 'M%';
+select last_name ,timestampdiff(MONTH,hire_date,curdate()) as 'Month worked' from employees order by 'Month worked';
+select concat(last_name, 'earns', salary, 'monthly but wants',salary*3) as 'Dream Salary' from employees;
+select min(hire_date),max(hire_date) from employees;
+select avg(salary), max(salary),min(salary),sum(salary) from employees where job_id like '%REP%';
+select count(*) from employees where department_id=50;
+select count(commission_pct) from employees where department_id=80;
+select count(distinct department_id) from employees;
+select avg(commission_pct) from employees;
+select avg(ifnull(commission_pct,0)) from employees;
+select department_id,avg(salary) from employees group by department_id;
+select department_id dept_id,job_id,sum(salary) from employees group by department_id,job_id;
+select department_id,max(salary) from employees group by department_id having max(salary)>10000;
+ select last_name,lpad(salary,15,'$') as SALARY from employees;
+select count(distinct manager_id) from employees;
+select employee_id,last_name,salary from employees where salary>(select avg(salary) from employees) and department_id=any(select department_id from employees where last_name like '%u%');
+select department_id,last_name,salary from employees where department_id=(select department_id from departments where department_name='Executive');
+select last_name,salary from employees where manager_id=any(select manager_id from employees where last_name='king');
+ select last_name,department_id,job_id from employees where department_id=any(select department_id from departments where location_id=1700);
+ select employee_id,last_name from employees where department_id=Any(select department_id from employees where last_name like '%u%');
+
+
+
+
+
+
+
+

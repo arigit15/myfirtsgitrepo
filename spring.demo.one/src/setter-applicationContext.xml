@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 
+define the bean
+ -->
+ 
+ <bean name="myFortuneService"
+ class="spring.demo.one.HappyFortuneService"></bean>
+ 
+ <bean name="myCoach" 
+ 		class="spring.demo.one.TennisCoach" scope="prototype">
+ 		<property name="emailAddress" value="admin@gmail.com"/>
+ 		<property name="team" value="knight rider"/>
+ 		
+ 		
+ 		</bean>
+
+</beans>
